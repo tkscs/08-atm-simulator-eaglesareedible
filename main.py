@@ -15,5 +15,26 @@ Options:
 """
 
 # start with 1 million dollars
-balance = 1000000
+balance = 0
+action = 'home'
 
+while action == 'home':
+    print(f'Your current balance is ${balance}')
+    action = input("Please select an action\nDeposit\nWithdraw\nExit\n")
+    while action == 'Deposit':
+        DepositAmount=float(input("Select deposit amount:\n"))
+        balance=balance+DepositAmount
+        while DepositAmount<0:
+            balance=balance-DepositAmount
+            DepositAmount=float(input("Cannot make negative deposit. Please try again.\n"))
+            balance=balance+DepositAmount
+        action = 'home'
+    while action == 'Withdraw':
+        WithdrawAmount=float(input("Enter amount of Withdraw\n"))
+        balance=balance-WithdrawAmount
+        while balance < 0:
+            balance=balance+WithdrawAmount
+            WithdrawAmount=float(input(f"Balance too low, current balance ={balance} enter allowed withdraw amount:\n"))
+            action = 'home'
+    while action == 'Exit':
+        break
