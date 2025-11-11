@@ -24,6 +24,10 @@ while action == 'home':
     while action == 'Deposit':
         DepositAmount=float(input("Select deposit amount:\n"))
         balance=balance+DepositAmount
+        while DepositAmount<0:
+            balance=balance-DepositAmount
+            DepositAmount=float(input("Cannot make negative deposit. Please try again.\n"))
+            balance=balance+DepositAmount
         action = 'home'
     while action == 'Withdraw':
         WithdrawAmount=float(input("Enter amount of Withdraw\n"))
